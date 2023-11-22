@@ -1,0 +1,17 @@
+pip install django
+pip install django-allauth for socialaccount
+pip install pillow for image handling
+pip insstall django-ckeditor
+pip install six
+
+
+# for migration
+python manage.py makemigrations
+python mnanage.py migrate
+
+
+#for creating superuser
+python manage.py createsuperuser
+
+python manage.py runserver
+

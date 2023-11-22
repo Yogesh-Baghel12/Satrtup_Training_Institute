@@ -1,0 +1,128 @@
+{% extends 'base.html' %} 
+{% block title %} Profile {% endblock title %} 
+{% block body %}
+
+<div class="container mt-2">
+  <h1 class="text-center text-primary">Welcome</h1>
+
+  <div class="row">
+    <div class="col-md-3">
+      <div><a href="/" class="btn btn-primary"><<< Go Back</a></div>
+      <br>
+    </div>
+
+    {% for d in details %}
+    <div class="col-md-7">
+      {% include 'messages.html' %}
+      <div class="card p-3">
+        <div class="card-title ">
+          <h3 class="text-primary">Candidate Details</h3>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a
+              href="/candidateupdate/{{d.candidateId}}/" class="text-primary"
+              class="btn btn-light d-grid gap-2 d-md-flex justify-content-md-end text-primary"
+              >Update Details</a
+            >
+          </div>
+        </div>
+        <div class="card-body">
+          <h5 class="text-success">Candidate Id : <b> {{d.candidateId}} </b></h5>
+          <hr />
+          <h5 class="text-success">Name : <b> {{d.firstName}} </b> <b> {{d.lastName}} </b></h5>
+          <hr />
+          <h5 class="text-success">Father Name : <b> {{d.fatherName}} </b></h5>
+          <hr />
+          <h5 class="text-success">Phone Number : <b> {{d.phoneNumber}} </b></h5>
+          <hr />
+          <h5 class="text-success">Alternate Number : <b> {{d.alternateNumber}} </b></h5>
+          <hr />
+          <h5 class="text-success">Email: <b> {{d.email}} </b></h5>
+          <hr />
+          <h5 class="text-success">College Name : <b> {{d.collegeName}} </b></h5>
+          <hr />
+          <h5 class="text-success">Address : <b> {{d.address}} </b></h5><hr/>
+        
+          <h5 class="text-success">Computer Knowledge : <b> {{d.computerKnowledge}} </b></h5>
+          <h5 class="text-success">Landmark : <b> {{d.landmark}} </b></h5>
+          <hr />
+          <h5 class="text-success">Street : <b> {{d.street}} </b></h5>
+          <h5 class="text-success">Course : <b> {{d.Course}} </b></h5>
+          <h5 class="text-success">City: <b> {{d.city}} </b></h5>
+          <hr />
+          <h5 class="text-success">Pincode : <b> {{d.pincode}} </b></h5>
+          <hr />
+          <h5 class="text-success">Company Name : <b> {{d.companyName}} </b></h5>
+          
+          <h5 class="text-success">Designation : <b> {{d.designation}} </b></h5>
+          <hr />
+          <h5 class="text-success">Qualification : <b> {{d.qualification}} </b></h5>
+          <hr />
+          <hr />
+          <h5 class="text-primary">Enrollment Date : <b> {{d.timestamp}} </b></h5>
+          <h4 class="text-primary">Amount Balance : {{status.balance}}</h4>
+          <h4 class="text-primary">Payment Status : {{status.paymentstatus}}</h4>
+          
+          <h4 class="text-primary">Trainer Assigned : {{d.trainer}}</h4>
+    
+    <h2 class="text-success">Payment Status</h2>
+    
+    <h4 class="text-primary">Amount Paid : {{status.amount}}</h4>
+    <h4 class="text-primary">Amount Balance : {{status.balance}}</h4>
+    <h4 class="text-primary">Payment status : {{status.paymentstatus}}</h4>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% comment %} attendance display {% endcomment %}
+<div class="container mt-2">
+    <hr>
+<h1 class="text-center">Attendance Status</h1>
+<hr>
+    <table class="table">
+        <thead class="thead-dark">
+          <tr class="table-primary">
+            <th scope="col">Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Login Time</th>
+            <th scope="col">Logout Time</th>
+            <th scope="col">Approved Status</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        {% for a in attendanceStats%}
+          <tr class="table-success">
+            <td>{{a.name}}</td>
+            <td>{{a.date}}</td>
+            <td>{{a.logintime}}</td>
+            <td>{{a.logouttime}}</td>
+            {% if a.approved %}
+            <td><i class="fa-solid fa-thumbs-up"></i> Approved</td>
+            {% else %}
+            <td> <i class="fa-solid fa-circle-xmark"></i> Not Approved</td>
+            {% endif %}
+            
+          </tr>
+        {% endfor %}
+         
+        </tbody>
+      </table>
+      
+      
+    
+
+</div>
+
+
+
+
+
+
+</div>
+
+<br>
+<br>
+<br>
+
+
+{% endblock body %}
